@@ -14,4 +14,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\AnimalShelter.Application\AnimalShelter.Application.csproj" />
+    <ProjectReference Include="..\AnimalShelter.DataAccess\AnimalShelter.DataAccess.csproj" />
+  </ItemGroup>
+
 </Project>
