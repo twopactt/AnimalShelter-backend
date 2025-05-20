@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace AnimalShelter.DataAccess.Migrations
 {
     [DbContext(typeof(AnimalShelterDbContext))]
-    [Migration("20250515153003_init")]
+    [Migration("20250520162255_init")]
     partial class init
     {
         /// <inheritdoc />

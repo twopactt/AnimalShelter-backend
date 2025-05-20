@@ -21,6 +21,9 @@ namespace AnimalShelter.DataAccess.Configurations
             builder.Property(b => b.Patronymic)
                 .IsRequired();
 
+            builder.Property(b => b.DateOfBirth)
+                .IsRequired();
+
             builder.Property(b => b.Phone)
                 .IsRequired();
 

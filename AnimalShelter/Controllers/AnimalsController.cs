@@ -1,12 +1,10 @@
 ﻿using AnimalShelter.Application.Services;
-using AnimalShelter.Contracts;
+using AnimalShelter.Contracts.ContractsRequests;
+using AnimalShelter.Contracts.ContractsResponses;
 using AnimalShelter.Core.Models;
 using Microsoft.AspNetCore.Mvc;
-using AnimalShelter.Contracts.ContractsRequests;
-using AnimalShelter.DataAccess;
-using Microsoft.EntityFrameworkCore;
 
-namespace AnimalShelter.Controllers
+namespace AnimalShelter.WebApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]
