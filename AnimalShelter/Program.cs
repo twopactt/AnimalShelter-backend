@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using AnimalShelter.Application.Services;
 using AnimalShelter.DataAccess.Repositories;
 
-namespace AnimalShelter
+namespace AnimalShelter.WebApi
 {
     public class Program
     {
