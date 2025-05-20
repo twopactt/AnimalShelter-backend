@@ -1,9 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35931.197 d17.13
+VisualStudioVersion = 17.13.35931.197
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimalShelter", "AnimalShelter\AnimalShelter.csproj", "{AB7D3CD7-E613-42D0-A107-E1B14A0C15BE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimalShelter.WebApi", "AnimalShelter\AnimalShelter.WebApi.csproj", "{AB7D3CD7-E613-42D0-A107-E1B14A0C15BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimalShelter.Core", "AnimalShelter.Core\AnimalShelter.Core.csproj", "{7E51C0D9-A10A-4742-BA2C-B79EA3B05445}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimalShelter.DataAccess", "AnimalShelter.DataAccess\AnimalShelter.DataAccess.csproj", "{CAF28932-444F-4FF6-AD6E-05A298F0A9DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimalShelter.Application", "AnimalShelter.Application\AnimalShelter.Application.csproj", "{5375AD1F-8180-4D52-B541-553234CD35A0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{AB7D3CD7-E613-42D0-A107-E1B14A0C15BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB7D3CD7-E613-42D0-A107-E1B14A0C15BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB7D3CD7-E613-42D0-A107-E1B14A0C15BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E51C0D9-A10A-4742-BA2C-B79EA3B05445}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E51C0D9-A10A-4742-BA2C-B79EA3B05445}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E51C0D9-A10A-4742-BA2C-B79EA3B05445}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E51C0D9-A10A-4742-BA2C-B79EA3B05445}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAF28932-444F-4FF6-AD6E-05A298F0A9DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAF28932-444F-4FF6-AD6E-05A298F0A9DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAF28932-444F-4FF6-AD6E-05A298F0A9DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAF28932-444F-4FF6-AD6E-05A298F0A9DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5375AD1F-8180-4D52-B541-553234CD35A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5375AD1F-8180-4D52-B541-553234CD35A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5375AD1F-8180-4D52-B541-553234CD35A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5375AD1F-8180-4D52-B541-553234CD35A0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
