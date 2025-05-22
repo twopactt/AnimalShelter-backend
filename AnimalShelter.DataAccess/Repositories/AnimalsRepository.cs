@@ -72,6 +72,29 @@ namespace AnimalShelter.DataAccess.Repositories
 
         public async Task<Guid> Delete(Guid id)
         {
+            var animal = await _context.Animal.FirstOrDefaultAsync(a => a.Id == id);
+            if (animal == null)
+            {
+                return id;
+            }
+
+            if (!string.IsNullOrEmpty(animal.Photo))
+            {
+                using var httpClient = new HttpClient();
+                try
+                {
+                    var response = await httpClient.DeleteAsync($"http://localhost:5251/api/upload/delete-photo?photoPath={animal.Photo}");
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        Console.WriteLine($"Failed to delete photo: {response.StatusCode}");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error calling delete photo API: {ex.Message}");
+                }
+            }
+
             await _context.Animal
                 .Where(b => b.Id == id)
                 .ExecuteDeleteAsync();
