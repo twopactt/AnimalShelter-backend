@@ -363,6 +363,6 @@ MigrationBackup/
 FodyWeavers.xsd
 
 # Folder with images of animals
-AnimalShelter.WebApi\wwwroot\uploads
-wwwroot\uploads
-/wwwroot\uploads
+/wwwroot/uploads/
+wwwroot/uploads/
+AnimalShelter.WebApi/wwwroot/uploads/
