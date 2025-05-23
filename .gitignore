@@ -361,3 +361,8 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# Folder with images of animals
+/wwwroot/uploads/
+wwwroot/uploads/
+AnimalShelter.WebApi/wwwroot/uploads/
