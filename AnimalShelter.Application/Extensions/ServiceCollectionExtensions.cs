@@ -11,7 +11,6 @@ namespace AnimalShelter.Application.Extensions
             services.AddScoped<IAdoptionsService, AdoptionsService>();
             services.AddScoped<IAnimalsService, AnimalsService>();
             services.AddScoped<IAnimalStatusesService, AnimalStatusesService>();
-            services.AddScoped<IEmployeesService, EmployeesService>();
             services.AddScoped<IRolesService, RolesService>();
             services.AddScoped<IStatusAdoptionsService, StatusAdoptionsService>();
             services.AddScoped<ITemporaryAccommodationsService, TemporaryAccommodationsService>();

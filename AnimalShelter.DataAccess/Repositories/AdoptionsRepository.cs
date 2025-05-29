@@ -22,7 +22,7 @@ namespace AnimalShelter.DataAccess.Repositories
                 .ToListAsync();
 
             var adoptions = adoptionEntities
-                .Select(b => Adoption.Create(b.Id, b.ApplicationDate, b.UserId, b.AnimalId, b.EmployeeId).Adoption)
+                .Select(b => Adoption.Create(b.Id, b.ApplicationDate, b.UserId, b.AnimalId).Adoption)
                 .ToList();
 
             return adoptions;
@@ -35,8 +35,7 @@ namespace AnimalShelter.DataAccess.Repositories
                 Id = adoption.Id,
                 ApplicationDate = adoption.ApplicationDate,
                 UserId = adoption.UserId,
-                AnimalId = adoption.AnimalId,
-                EmployeeId = adoption.EmployeeId
+                AnimalId = adoption.AnimalId
             };
 
             await _context.Adoption.AddAsync(adoptionEntity);
@@ -49,16 +48,14 @@ namespace AnimalShelter.DataAccess.Repositories
             Guid id,
             DateOnly applicationDate,
             Guid userId,
-            Guid animalId,
-            Guid employeeId)
+            Guid animalId)
         {
             await _context.Adoption
                 .Where(b => b.Id == id)
                 .ExecuteUpdateAsync(s => s
                     .SetProperty(b => b.ApplicationDate, b => applicationDate)
                     .SetProperty(b => b.UserId, b => userId)
-                    .SetProperty(b => b.AnimalId, b => animalId)
-                    .SetProperty(b => b.EmployeeId, b => employeeId));
+                    .SetProperty(b => b.AnimalId, b => animalId));
 
             return id;
         }

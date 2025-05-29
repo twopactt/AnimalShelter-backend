@@ -4,7 +4,6 @@
         Guid Id,
         DateOnly ApplicationDate,
         Guid UserId,
-        Guid AnimalId,
-        Guid EmployeeId
+        Guid AnimalId
     );
 }

@@ -26,8 +26,6 @@ namespace AnimalShelter.DataAccess
 
         public DbSet<StatusAdoptionEntity> StatusAdoption { get; set; }
 
-        public DbSet<EmployeeEntity> Employee { get; set; }
-
         public DbSet<TemporaryAccommodationEntity> TemporaryAccommodation { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -40,7 +38,6 @@ namespace AnimalShelter.DataAccess
             modelBuilder.ApplyConfiguration(new AdoptionConfiguration());
             modelBuilder.ApplyConfiguration(new AdoptionApplicationConfiguration());
             modelBuilder.ApplyConfiguration(new StatusAdoptionConfiguration());
-            modelBuilder.ApplyConfiguration(new EmployeeConfiguration());
             modelBuilder.ApplyConfiguration(new TemporaryAccommodationConfiguration());
         }
     }

@@ -25,11 +25,10 @@ namespace AnimalShelter.Application.Services
             Guid id,
             DateOnly applicationDate,
             Guid userId,
-            Guid animalId,
-            Guid employeeId)
+            Guid animalId)
         {
             return await _adoptionsRepository.Update(
-                id, applicationDate, userId, animalId, employeeId);
+                id, applicationDate, userId, animalId);
         }
 
         public async Task<Guid> DeleteAdoption(Guid id)
