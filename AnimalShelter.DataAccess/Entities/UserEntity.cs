@@ -30,8 +30,6 @@
 
         public ICollection<AdoptionApplicationEntity> AdoptionApplication { get; set; }
 
-        public ICollection<EmployeeEntity> Employee { get; set; }
-
         public ICollection<TemporaryAccommodationEntity> TemporaryAccommodation { get; set; }
     }
 }

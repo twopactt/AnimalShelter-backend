@@ -13,11 +13,8 @@ namespace AnimalShelter.DataAccess.Entities
 
         public Guid AnimalId { get; set; }
 
-        public Guid EmployeeId { get; set; }
-
         // Навигационные свойства
         public virtual UserEntity User { get; set; }
         public virtual AnimalEntity Animal { get; set; }
-        public virtual EmployeeEntity Employee { get; set; }
     }
 }

@@ -31,16 +31,9 @@ namespace AnimalShelter.DataAccess.Configurations
                 .OnDelete(DeleteBehavior.Restrict)
                 .IsRequired();
 
-            builder.HasOne(a => a.Employee)
-                .WithMany(h => h.Adoption)
-                .HasForeignKey(a => a.EmployeeId)
-                .OnDelete(DeleteBehavior.Restrict)
-                .IsRequired();
-
             // Индексы для внешних ключей
             builder.HasIndex(a => a.UserId);
             builder.HasIndex(a => a.AnimalId);
-            builder.HasIndex(a => a.EmployeeId);
         }
     }
 }

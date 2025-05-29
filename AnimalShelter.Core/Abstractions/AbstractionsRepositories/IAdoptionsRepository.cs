@@ -7,6 +7,6 @@ namespace AnimalShelter.DataAccess.Repositories
         Task<Guid> Create(Adoption adoption);
         Task<Guid> Delete(Guid id);
         Task<List<Adoption>> Get();
-        Task<Guid> Update(Guid id, DateOnly applicationDate, Guid userId, Guid animalId, Guid employeeId);
+        Task<Guid> Update(Guid id, DateOnly applicationDate, Guid userId, Guid animalId);
     }
 }

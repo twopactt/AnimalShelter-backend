@@ -7,6 +7,6 @@ namespace AnimalShelter.Application.Services
         Task<Guid> CreateAdoption(Adoption adoption);
         Task<Guid> DeleteAdoption(Guid id);
         Task<List<Adoption>> GetAllAdoptions();
-        Task<Guid> UpdateAdoption(Guid id, DateOnly applicationDate, Guid userId, Guid animalId, Guid employeeId);
+        Task<Guid> UpdateAdoption(Guid id, DateOnly applicationDate, Guid userId, Guid animalId);
     }
 }

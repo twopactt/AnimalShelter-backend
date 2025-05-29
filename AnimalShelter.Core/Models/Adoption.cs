@@ -7,14 +7,12 @@
             Guid id,
             DateOnly applicationDate,
             Guid userId,
-            Guid animalId,
-            Guid employeeId)
+            Guid animalId)
         {
             Id = id;
             ApplicationDate = applicationDate;
             UserId = userId;
             AnimalId = animalId;
-            EmployeeId = employeeId;
         }
 
         public Guid Id { get; }
@@ -26,21 +24,16 @@
 
         public Guid AnimalId { get; }
 
-        public Guid EmployeeId { get; }
-
         // Навигационные свойства
         public User User { get; private set; }
 
         public Animal Animal { get; private set; }
 
-        public Employee Employee { get; private set; }
-
         public static (Adoption Adoption, string Error) Create(
             Guid id,
             DateOnly applicationDate,
             Guid userId,
-            Guid animalId,
-            Guid employeeId)
+            Guid animalId)
         {
             var error = string.Empty;
 
@@ -51,10 +44,7 @@
             if (animalId == Guid.Empty)
                 error += string.IsNullOrEmpty(error) ? "Animal is required" : "\nAnimal is required";
 
-            if (employeeId == Guid.Empty)
-                error += string.IsNullOrEmpty(error) ? "Employee info is required" : "\nEmployee info is required";
-
-            var adoption = new Adoption(id, applicationDate, userId, animalId, employeeId);
+            var adoption = new Adoption(id, applicationDate, userId, animalId);
 
             return (adoption, error);
         }
