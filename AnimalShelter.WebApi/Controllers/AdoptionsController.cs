@@ -22,7 +22,7 @@ namespace AnimalShelter.WebApi.Controllers
         {
             var adoptions = await _adoptionsService.GetAllAdoptions();
 
-            var response = adoptions.Select(b => new AdoptionsResponse(b.Id, b.ApplicationDate, b.UserId, b.AnimalId, b.EmployeeId));
+            var response = adoptions.Select(b => new AdoptionsResponse(b.Id, b.ApplicationDate, b.UserId, b.AnimalId));
 
             return Ok(response);
         }
@@ -34,8 +34,7 @@ namespace AnimalShelter.WebApi.Controllers
                 Guid.NewGuid(),
                 request.ApplicationDate,
                 request.UserId,
-                request.AnimalId,
-                request.EmployeeId);
+                request.AnimalId);
 
             if (!string.IsNullOrEmpty(error))
             {
@@ -54,8 +53,7 @@ namespace AnimalShelter.WebApi.Controllers
                 id,
                 request.ApplicationDate,
                 request.UserId,
-                request.AnimalId,
-                request.EmployeeId);
+                request.AnimalId);
 
             return Ok(adoptionId);
         }

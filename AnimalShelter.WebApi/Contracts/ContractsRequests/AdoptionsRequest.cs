@@ -3,7 +3,6 @@
     public record AdoptionsRequest(
         DateOnly ApplicationDate,
         Guid UserId,
-        Guid AnimalId,
-        Guid EmployeeId
+        Guid AnimalId
     );
 }

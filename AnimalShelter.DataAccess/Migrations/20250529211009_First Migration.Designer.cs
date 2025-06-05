@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace AnimalShelter.DataAccess.Migrations
 {
     [DbContext(typeof(AnimalShelterDbContext))]
-    [Migration("20250520162255_init")]
-    partial class init
+    [Migration("20250529211009_First Migration")]
+    partial class FirstMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -72,17 +72,12 @@ namespace AnimalShelter.DataAccess.Migrations
                         .HasMaxLength(250)
                         .HasColumnType("date");
 
-                    b.Property<Guid>("EmployeeId")
-                        .HasColumnType("uuid");
-
                     b.Property<Guid>("UserId")
                         .HasColumnType("uuid");
 
                     b.HasKey("Id");
 
                     b.HasIndex("AnimalId");
-
-                    b.HasIndex("EmployeeId");
 
                     b.HasIndex("UserId");
 
@@ -146,25 +141,6 @@ namespace AnimalShelter.DataAccess.Migrations
                     b.ToTable("AnimalStatus");
                 });
 
-            modelBuilder.Entity("AnimalShelter.DataAccess.Entities.EmployeeEntity", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
-
-                    b.Property<bool>("IsAdmin")
-                        .HasColumnType("boolean");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uuid");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Employee");
-                });
-
             modelBuilder.Entity("AnimalShelter.DataAccess.Entities.RoleEntity", b =>
                 {
                     b.Property<Guid>("Id")
@@ -212,17 +188,12 @@ namespace AnimalShelter.DataAccess.Migrations
                     b.Property<DateOnly>("DateAnimalReturn")
                         .HasColumnType("date");
 
-                    b.Property<Guid?>("EmployeeEntityId")
-                        .HasColumnType("uuid");
-
                     b.Property<Guid>("UserId")
                         .HasColumnType("uuid");
 
                     b.HasKey("Id");
 
                     b.HasIndex("AnimalId");
-
-                    b.HasIndex("EmployeeEntityId");
 
                     b.HasIndex("UserId");
 
@@ -328,12 +299,6 @@ namespace AnimalShelter.DataAccess.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("AnimalShelter.DataAccess.Entities.EmployeeEntity", "Employee")
-                        .WithMany("Adoption")
-                        .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.HasOne("AnimalShelter.DataAccess.Entities.UserEntity", "User")
                         .WithMany("Adoption")
                         .HasForeignKey("UserId")
@@ -341,8 +306,6 @@ namespace AnimalShelter.DataAccess.Migrations
                         .IsRequired();
 
                     b.Navigation("Animal");
-
-                    b.Navigation("Employee");
 
                     b.Navigation("User");
                 });
@@ -366,17 +329,6 @@ namespace AnimalShelter.DataAccess.Migrations
                     b.Navigation("TypeAnimal");
                 });
 
-            modelBuilder.Entity("AnimalShelter.DataAccess.Entities.EmployeeEntity", b =>
-                {
-                    b.HasOne("AnimalShelter.DataAccess.Entities.UserEntity", "User")
-                        .WithMany("Employee")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("AnimalShelter.DataAccess.Entities.TemporaryAccommodationEntity", b =>
                 {
                     b.HasOne("AnimalShelter.DataAccess.Entities.AnimalEntity", "Animal")
@@ -384,10 +336,6 @@ namespace AnimalShelter.DataAccess.Migrations
                         .HasForeignKey("AnimalId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
-
-                    b.HasOne("AnimalShelter.DataAccess.Entities.EmployeeEntity", null)
-                        .WithMany("TemporaryAccommodation")
-                        .HasForeignKey("EmployeeEntityId");
 
                     b.HasOne("AnimalShelter.DataAccess.Entities.UserEntity", "User")
                         .WithMany("TemporaryAccommodation")
@@ -425,13 +373,6 @@ namespace AnimalShelter.DataAccess.Migrations
                     b.Navigation("Animal");
                 });
 
-            modelBuilder.Entity("AnimalShelter.DataAccess.Entities.EmployeeEntity", b =>
-                {
-                    b.Navigation("Adoption");
-
-                    b.Navigation("TemporaryAccommodation");
-                });
-
             modelBuilder.Entity("AnimalShelter.DataAccess.Entities.RoleEntity", b =>
                 {
                     b.Navigation("User");
@@ -452,8 +393,6 @@ namespace AnimalShelter.DataAccess.Migrations
                     b.Navigation("Adoption");
 
                     b.Navigation("AdoptionApplication");
-
-                    b.Navigation("Employee");
 
                     b.Navigation("TemporaryAccommodation");
                 });
