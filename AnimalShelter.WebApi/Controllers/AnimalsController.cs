@@ -27,6 +27,29 @@ namespace AnimalShelter.WebApi.Controllers
             return Ok(response);
         }
 
+        [HttpGet("{id:guid}")]
+        public async Task<ActionResult<AnimalsResponse>> GetAnimalById(Guid id)
+        {
+            var animal = await _animalsService.GetAnimalById(id);
+
+            if (animal == null)
+            {
+                return NotFound();
+            }
+
+            var response = new AnimalsResponse(
+                animal.Id,
+                animal.Name,
+                animal.Gender,
+                animal.Age,
+                animal.Description,
+                animal.Photo,
+                animal.TypeAnimalId,
+                animal.AnimalStatusId);
+
+            return Ok(response);
+        }
+
         [HttpPost]
         public async Task<ActionResult<Guid>> CreateAnimal([FromBody] AnimalsRequest request)
         {

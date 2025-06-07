@@ -16,6 +16,11 @@ namespace AnimalShelter.Application.Services
             return await _animalsRepository.Get();
         }
 
+        public async Task<Animal?> GetAnimalById(Guid id)
+        {
+            return await _animalsRepository.GetById(id);
+        }
+
         public async Task<Guid> CreateAnimal(Animal animal)
         {
             return await _animalsRepository.Create(animal);

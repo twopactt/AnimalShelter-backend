@@ -7,6 +7,7 @@ namespace AnimalShelter.DataAccess.Repositories
         Task<Guid> Create(Animal animal);
         Task<Guid> Delete(Guid id);
         Task<List<Animal>> Get();
+        Task<Animal?> GetById(Guid id);
         Task<Guid> Update(Guid id, string name, string gender, int age, string description, string photo, Guid typeAnimalId, Guid animalStatusId);
     }
 }
