@@ -16,6 +16,9 @@ namespace AnimalShelter.Application.Extensions
             services.AddScoped<ITemporaryAccommodationsService, TemporaryAccommodationsService>();
             services.AddScoped<ITypeAnimalsService, TypeAnimalsService>();
             services.AddScoped<IUsersService, UsersService>();
+            services.AddScoped<IPasswordHasherService, PasswordHasherService>();
+            services.AddScoped<IJwtService, JwtService>();
+            services.AddScoped<IAuthService, AuthService>();
 
             return services;
         }
