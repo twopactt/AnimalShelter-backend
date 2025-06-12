@@ -22,7 +22,7 @@ namespace AnimalShelter.WebApi.Controllers
         {
             var temporaryAccommodations = await _temporaryAccommodationsService.GetAllTemporaryAccommodations();
 
-            var response = temporaryAccommodations.Select(b => new TemporaryAccommodationsResponse(b.Id, b.DateAnimalCapture, b.DateAnimalReturn, b.UserId, b.AnimalId));
+            var response = temporaryAccommodations.Select(b => new TemporaryAccommodationsResponse(b.Id, b.DateAnimalCapture, b.DateAnimalReturn, b.UserId, b.AnimalId, b.StatusTemporaryAccommodationId));
 
             return Ok(response);
         }
@@ -35,7 +35,8 @@ namespace AnimalShelter.WebApi.Controllers
                 request.DateAnimalCapture,
                 request.DateAnimalReturn,
                 request.UserId,
-                request.AnimalId);
+                request.AnimalId,
+                request.StatusTemporaryAccommodationId);
 
             if (!string.IsNullOrEmpty(error))
             {
@@ -55,7 +56,8 @@ namespace AnimalShelter.WebApi.Controllers
                 request.DateAnimalCapture,
                 request.DateAnimalReturn,
                 request.UserId,
-                request.AnimalId);
+                request.AnimalId, 
+                request.StatusTemporaryAccommodationId);
 
             return Ok(temporaryAccommodationId);
         }

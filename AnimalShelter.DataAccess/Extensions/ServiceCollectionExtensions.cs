@@ -16,6 +16,7 @@ namespace AnimalShelter.DataAccess.Extensions
             services.AddScoped<ITemporaryAccommodationsRepository, TemporaryAccommodationsRepository>();
             services.AddScoped<ITypeAnimalsRepository, TypeAnimalsRepository>();
             services.AddScoped<IUsersRepository, UsersRepository>();
+            services.AddScoped<IStatusTemporaryAccommodationsRepository, StatusTemporaryAccommodationsRepository>();
 
             return services;
         }

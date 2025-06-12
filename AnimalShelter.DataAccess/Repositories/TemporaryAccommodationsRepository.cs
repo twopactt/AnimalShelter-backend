@@ -20,7 +20,7 @@ namespace AnimalShelter.DataAccess.Repositories
                 .ToListAsync();
 
             var temporaryAccommodations = temporaryAccommodationEntities
-                .Select(b => TemporaryAccommodation.Create(b.Id, b.DateAnimalCapture, b.DateAnimalReturn, b.UserId, b.AnimalId).TemporaryAccommodation)
+                .Select(b => TemporaryAccommodation.Create(b.Id, b.DateAnimalCapture, b.DateAnimalReturn, b.UserId, b.AnimalId, b.StatusTemporaryAccommodationId).TemporaryAccommodation)
                 .ToList();
 
             return temporaryAccommodations;
@@ -34,7 +34,8 @@ namespace AnimalShelter.DataAccess.Repositories
                 DateAnimalCapture = temporaryAccommodation.DateAnimalCapture,
                 DateAnimalReturn = temporaryAccommodation.DateAnimalReturn,
                 UserId = temporaryAccommodation.UserId,
-                AnimalId = temporaryAccommodation.AnimalId
+                AnimalId = temporaryAccommodation.AnimalId,
+                StatusTemporaryAccommodationId = temporaryAccommodation.StatusTemporaryAccommodationId
             };
 
             await _context.TemporaryAccommodation.AddAsync(temporaryAccommodationEntity);
@@ -48,7 +49,8 @@ namespace AnimalShelter.DataAccess.Repositories
             DateOnly dateAnimalCapture,
             DateOnly dateAnimalReturn,
             Guid userId,
-            Guid animalId)
+            Guid animalId,
+            Guid statusTemporaryAccommodationId)
         {
             await _context.TemporaryAccommodation
                 .Where(b => b.Id == id)
@@ -56,7 +58,8 @@ namespace AnimalShelter.DataAccess.Repositories
                     .SetProperty(b => b.DateAnimalCapture, b => dateAnimalCapture)
                     .SetProperty(b => b.DateAnimalReturn, b => dateAnimalReturn)
                     .SetProperty(b => b.UserId, b => userId)
-                    .SetProperty(b => b.AnimalId, b => animalId));
+                    .SetProperty(b => b.AnimalId, b => animalId)
+                    .SetProperty(b => b.StatusTemporaryAccommodationId, b => statusTemporaryAccommodationId));
 
             return id;
         }
