@@ -27,6 +27,28 @@ namespace AnimalShelter.DataAccess.Repositories
             return users;
         }
 
+        public async Task<User?> GetById(Guid id)
+        {
+            var userEntity = await _context.User
+                .AsNoTracking()
+                .FirstOrDefaultAsync(a => a.Id == id);
+
+            if (userEntity == null)
+                return null;
+
+            return User.Create(
+                userEntity.Id,
+                userEntity.Surname,
+                userEntity.Name,
+                userEntity.Patronymic,
+                userEntity.DateOfBirth,
+                userEntity.Phone,
+                userEntity.Email,
+                userEntity.Login,
+                userEntity.Password,
+                userEntity.RoleId).User;
+        }
+
         public async Task<Guid> Create(User user)
         {
             var userEntity = new UserEntity

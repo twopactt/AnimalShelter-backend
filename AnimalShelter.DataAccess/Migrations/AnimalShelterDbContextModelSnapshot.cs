@@ -170,6 +170,22 @@ namespace AnimalShelter.DataAccess.Migrations
                     b.ToTable("StatusAdoption");
                 });
 
+            modelBuilder.Entity("AnimalShelter.DataAccess.Entities.StatusTemporaryAccommodationEntity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("character varying(250)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("StatusTemporaryAccommodation");
+                });
+
             modelBuilder.Entity("AnimalShelter.DataAccess.Entities.TemporaryAccommodationEntity", b =>
                 {
                     b.Property<Guid>("Id")
@@ -185,12 +201,17 @@ namespace AnimalShelter.DataAccess.Migrations
                     b.Property<DateOnly>("DateAnimalReturn")
                         .HasColumnType("date");
 
+                    b.Property<Guid>("StatusTemporaryAccommodationId")
+                        .HasColumnType("uuid");
+
                     b.Property<Guid>("UserId")
                         .HasColumnType("uuid");
 
                     b.HasKey("Id");
 
                     b.HasIndex("AnimalId");
+
+                    b.HasIndex("StatusTemporaryAccommodationId");
 
                     b.HasIndex("UserId");
 
@@ -334,6 +355,12 @@ namespace AnimalShelter.DataAccess.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("AnimalShelter.DataAccess.Entities.StatusTemporaryAccommodationEntity", "StatusTemporaryAccommodation")
+                        .WithMany("TemporaryAccommodation")
+                        .HasForeignKey("StatusTemporaryAccommodationId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.HasOne("AnimalShelter.DataAccess.Entities.UserEntity", "User")
                         .WithMany("TemporaryAccommodation")
                         .HasForeignKey("UserId")
@@ -341,6 +368,8 @@ namespace AnimalShelter.DataAccess.Migrations
                         .IsRequired();
 
                     b.Navigation("Animal");
+
+                    b.Navigation("StatusTemporaryAccommodation");
 
                     b.Navigation("User");
                 });
@@ -378,6 +407,11 @@ namespace AnimalShelter.DataAccess.Migrations
             modelBuilder.Entity("AnimalShelter.DataAccess.Entities.StatusAdoptionEntity", b =>
                 {
                     b.Navigation("AdoptionApplication");
+                });
+
+            modelBuilder.Entity("AnimalShelter.DataAccess.Entities.StatusTemporaryAccommodationEntity", b =>
+                {
+                    b.Navigation("TemporaryAccommodation");
                 });
 
             modelBuilder.Entity("AnimalShelter.DataAccess.Entities.TypeAnimalEntity", b =>

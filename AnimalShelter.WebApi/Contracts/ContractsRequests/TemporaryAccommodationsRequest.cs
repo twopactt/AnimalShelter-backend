@@ -4,6 +4,7 @@
         DateOnly DateAnimalCapture,
         DateOnly DateAnimalReturn,
         Guid UserId,
-        Guid AnimalId
+        Guid AnimalId,
+        Guid StatusTemporaryAccommodationId
     );
 }

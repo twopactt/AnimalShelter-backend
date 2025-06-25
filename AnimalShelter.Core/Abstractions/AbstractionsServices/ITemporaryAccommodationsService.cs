@@ -7,6 +7,6 @@ namespace AnimalShelter.Application.Services
         Task<Guid> CreateTemporaryAccommodation(TemporaryAccommodation temporaryAccommodation);
         Task<Guid> DeleteTemporaryAccommodation(Guid id);
         Task<List<TemporaryAccommodation>> GetAllTemporaryAccommodations();
-        Task<Guid> UpdateTemporaryAccommodation(Guid id, DateOnly dateAnimalCapture, DateOnly dateAnimalReturn, Guid userId, Guid animalId);
+        Task<Guid> UpdateTemporaryAccommodation(Guid id, DateOnly dateAnimalCapture, DateOnly dateAnimalReturn, Guid userId, Guid animalId, Guid statusTemporaryAccommodationId);
     }
 }

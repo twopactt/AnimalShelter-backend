@@ -30,9 +30,16 @@ namespace AnimalShelter.DataAccess.Configurations
                 .OnDelete(DeleteBehavior.Restrict)
                 .IsRequired();
 
+            builder.HasOne(a => a.StatusTemporaryAccommodation)
+               .WithMany(s => s.TemporaryAccommodation)
+               .HasForeignKey(a => a.StatusTemporaryAccommodationId)
+               .OnDelete(DeleteBehavior.Restrict)
+               .IsRequired();
+
             // Индексы для внешних ключей
             builder.HasIndex(a => a.UserId);
             builder.HasIndex(a => a.AnimalId);
+            builder.HasIndex(a => a.StatusTemporaryAccommodationId);
         }
     }
 }

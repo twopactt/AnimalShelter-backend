@@ -13,8 +13,11 @@
 
         public Guid AnimalId { get; set; }
 
+        public Guid StatusTemporaryAccommodationId { get; set; }
+
         // Навигационные свойства
         public virtual UserEntity User { get; set; }
         public virtual AnimalEntity Animal { get; set; }
+        public virtual StatusTemporaryAccommodationEntity StatusTemporaryAccommodation { get; set; }
     }
 }

@@ -26,10 +26,11 @@ namespace AnimalShelter.Application.Services
             DateOnly dateAnimalCapture,
             DateOnly dateAnimalReturn,
             Guid userId,
-            Guid animalId)
+            Guid animalId,
+            Guid statusTemporaryAccommodationId)
         {
             return await _temporaryAccommodationsRepository.Update(
-                id, dateAnimalCapture, dateAnimalReturn, userId, animalId);
+                id, dateAnimalCapture, dateAnimalReturn, userId, animalId, statusTemporaryAccommodationId);
         }
 
         public async Task<Guid> DeleteTemporaryAccommodation(Guid id)

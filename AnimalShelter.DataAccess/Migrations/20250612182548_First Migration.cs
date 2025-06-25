@@ -48,6 +48,18 @@ namespace AnimalShelter.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "StatusTemporaryAccommodation",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Name = table.Column<string>(type: "character varying(250)", maxLength: 250, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_StatusTemporaryAccommodation", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "TypeAnimal",
                 columns: table => new
                 {
@@ -183,7 +195,8 @@ namespace AnimalShelter.DataAccess.Migrations
                     DateAnimalCapture = table.Column<DateOnly>(type: "date", nullable: false),
                     DateAnimalReturn = table.Column<DateOnly>(type: "date", nullable: false),
                     UserId = table.Column<Guid>(type: "uuid", nullable: false),
-                    AnimalId = table.Column<Guid>(type: "uuid", nullable: false)
+                    AnimalId = table.Column<Guid>(type: "uuid", nullable: false),
+                    StatusTemporaryAccommodationId = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -192,6 +205,12 @@ namespace AnimalShelter.DataAccess.Migrations
                         name: "FK_TemporaryAccommodation_Animal_AnimalId",
                         column: x => x.AnimalId,
                         principalTable: "Animal",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_TemporaryAccommodation_StatusTemporaryAccommodation_StatusT~",
+                        column: x => x.StatusTemporaryAccommodationId,
+                        principalTable: "StatusTemporaryAccommodation",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
@@ -243,6 +262,11 @@ namespace AnimalShelter.DataAccess.Migrations
                 column: "AnimalId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_TemporaryAccommodation_StatusTemporaryAccommodationId",
+                table: "TemporaryAccommodation",
+                column: "StatusTemporaryAccommodationId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_TemporaryAccommodation_UserId",
                 table: "TemporaryAccommodation",
                 column: "UserId");
@@ -270,6 +294,9 @@ namespace AnimalShelter.DataAccess.Migrations
 
             migrationBuilder.DropTable(
                 name: "Animal");
+
+            migrationBuilder.DropTable(
+                name: "StatusTemporaryAccommodation");
 
             migrationBuilder.DropTable(
                 name: "User");
